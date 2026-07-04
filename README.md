@@ -22,4 +22,4 @@ Created by [Stan Rogoz](https://github.com/stanrogoz).
 
 ## Live site
 
-The framework guide is available at [5p-framework.stanrogoz.github.io](https://5p-framework.stanrogoz.github.io).
+The 5P Framework guide is available at [stanrogoz.github.io/5p-framework](https://stanrogoz.github.io/5p-framework/).
