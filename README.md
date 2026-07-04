@@ -16,7 +16,7 @@ A practical framework for turning AI inputs into **decision-ready outputs**.
 
 - `docs/index.html` — interactive framework guide
 - `docs/slides/` — presentation deck (individual slides + `deck.html`)
-- `docs/assets/` — framework imagery
+- `docs/assets/` — framework assets i.e. png
 
 ## Live site
 
