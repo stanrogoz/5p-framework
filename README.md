@@ -1,7 +1,5 @@
 # 5P Framework by Stan Rogoz
 
-![5P Framework diagram](./docs/assets/5p-framework.png)
-
 A practical framework for turning AI inputs into **decision-ready outputs**.
 
 ## The Five Steps
