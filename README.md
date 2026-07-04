@@ -1,8 +1,8 @@
-# 5P Framework
+# 5P Framework by Stan Rogoz
+
+![5P Framework diagram](./docs/assets/5p-framework.png)
 
 A practical framework for turning AI inputs into **decision-ready outputs**.
-
-Created by [Stan Rogoz](https://github.com/stanrogoz).
 
 ## The Five Steps
 
@@ -23,3 +23,5 @@ Created by [Stan Rogoz](https://github.com/stanrogoz).
 ## Live site
 
 The 5P Framework guide is available at [stanrogoz.github.io/5p-framework](https://stanrogoz.github.io/5p-framework/).
+
+Created by [Stan Rogoz](https://github.com/stanrogoz). London, 2026
