@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5P Framework — Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #11264a;
+      --navy-deep: #0c1c38;
+      --blue: #1f8ce6;
+      --line: rgba(255, 255, 255, .16);
+      --ease: cubic-bezier(.2, .7, .2, 1);
+      --slide-w: 1280px;
+      --slide-h: 720px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(1200px 700px at 50% -10%, #16335f, #0a1428 60%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ---------- Stage ---------- */
+    .stage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .frame-scaler {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--slide-w);
+      height: var(--slide-h);
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center center;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+      background: #fff;
+    }
+    iframe {
+      width: var(--slide-w);
+      height: var(--slide-h);
+      border: 0;
+      display: block;
+    }
+
+    /* ---------- Control bar ---------- */
+    .controls {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 18px 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 11px 18px;
+      cursor: pointer;
+      transition: transform .15s var(--ease), background .2s var(--ease), border-color .2s var(--ease), opacity .2s var(--ease);
+    }
+    .btn:hover:not(:disabled) { background: rgba(255, 255, 255, .16); transform: translateY(-1px); }
+    .btn:active:not(:disabled) { transform: translateY(0); }
+    .btn:disabled { opacity: .38; cursor: default; }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 8px 24px rgba(31, 140, 230, .4);
+    }
+    .btn-primary:hover:not(:disabled) { background: #1779c9; }
+
+    .counter {
+      min-width: 92px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: rgba(255, 255, 255, .82);
+    }
+    .counter b { color: #fff; }
+    .counter .name {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 2px;
+    }
+
+    /* ---------- Dots ---------- */
+    .dots {
+      display: flex;
+      gap: 8px;
+      margin: 0 6px;
+    }
+    .dots button {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255, 255, 255, .28);
+      cursor: pointer;
+      transition: background .2s var(--ease), width .2s var(--ease);
+    }
+    .dots button:hover { background: rgba(255, 255, 255, .55); }
+    .dots button.active { width: 26px; border-radius: 999px; background: var(--blue); }
+
+    .hint {
+      position: fixed;
+      bottom: 4px;
+      right: 14px;
+      font-size: 11px;
+      letter-spacing: .04em;
+      color: rgba(255, 255, 255, .38);
+    }
+    @media (max-width: 720px) {
+      .counter .name, .hint { display: none; }
+      .btn { padding: 10px 14px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="frame-scaler" id="scaler">
+      <iframe id="frame" title="Slide" src="./01-intro.html"></iframe>
+    </div>
+  </div>
+
+  <nav class="controls" aria-label="Slide navigation">
+    <button class="btn" id="start" type="button" title="First slide (Home)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 9 12l10-8v16Z"/><path d="M5 19V5"/></svg>
+      Start
+    </button>
+    <button class="btn" id="prev" type="button" title="Previous (←)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Prev
+    </button>
+
+    <span class="counter"><b id="cur">1</b> / <span id="total">6</span><span class="name" id="slide-name">Overview</span></span>
+    <div class="dots" id="dots" role="tablist" aria-label="Jump to slide"></div>
+
+    <button class="btn btn-primary" id="next" type="button" title="Next (→ or Space)">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </nav>
+
+  <span class="hint">← → / Space &middot; Home &middot; F for fullscreen</span>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var SLIDES = [
+        { file: '01-intro.html',   name: 'Overview' },
+        { file: '02-pause.html',   name: 'Pause' },
+        { file: '03-play.html',    name: 'Play' },
+        { file: '04-push.html',    name: 'Push' },
+        { file: '05-polish.html',  name: 'Polish' },
+        { file: '06-present.html', name: 'Present' },
+        { file: '07-thanks.html',  name: 'Thank you' }
+      ];
+      var SLIDE_W = 1280, SLIDE_H = 720;
+
+      var frame = document.getElementById('frame');
+      var scaler = document.getElementById('scaler');
+      var stage = document.querySelector('.stage');
+      var elCur = document.getElementById('cur');
+      var elTotal = document.getElementById('total');
+      var elName = document.getElementById('slide-name');
+      var btnStart = document.getElementById('start');
+      var btnPrev = document.getElementById('prev');
+      var btnNext = document.getElementById('next');
+      var dotsWrap = document.getElementById('dots');
+
+      var index = 0;
+
+      function buildDots() {
+        elTotal.textContent = String(SLIDES.length);
+        dotsWrap.innerHTML = SLIDES.map(function (s, i) {
+          return '<button type="button" role="tab" data-i="' + i + '" aria-label="' + s.name + '"></button>';
+        }).join('');
+      }
+
+      function fitScale() {
+        var pad = 48;
+        var availW = stage.clientWidth - pad;
+        var availH = stage.clientHeight - pad;
+        var scale = Math.min(availW / SLIDE_W, availH / SLIDE_H);
+        if (!isFinite(scale) || scale <= 0) scale = 1;
+        scaler.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+      }
+
+      function render() {
+        var s = SLIDES[index];
+        if (frame.getAttribute('src') !== './' + s.file) {
+          frame.setAttribute('src', './' + s.file);
+        }
+        elCur.textContent = String(index + 1);
+        elName.textContent = s.name;
+        btnPrev.disabled = (index === 0);
+        btnStart.disabled = (index === 0);
+        btnNext.disabled = (index === SLIDES.length - 1);
+        Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
+          d.classList.toggle('active', i === index);
+          if (i === index) { d.setAttribute('aria-selected', 'true'); }
+          else { d.removeAttribute('aria-selected'); }
+        });
+        if (('#' + (index + 1)) !== location.hash) {
+          history.replaceState(null, '', '#' + (index + 1));
+        }
+      }
+
+      function go(i) {
+        index = Math.max(0, Math.min(SLIDES.length - 1, i));
+        render();
+      }
+      function next() { if (index < SLIDES.length - 1) go(index + 1); }
+      function prev() { if (index > 0) go(index - 1); }
+      function start() { go(0); }
+
+      function hashIndex() {
+        var n = parseInt((location.hash || '').replace('#', ''), 10);
+        return (isFinite(n) && n >= 1) ? Math.min(n - 1, SLIDES.length - 1) : 0;
+      }
+
+      btnStart.addEventListener('click', start);
+      btnPrev.addEventListener('click', prev);
+      btnNext.addEventListener('click', next);
+      dotsWrap.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-i]');
+        if (b) go(parseInt(b.getAttribute('data-i'), 10));
+      });
+
+      document.addEventListener('keydown', function (e) {
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+            e.preventDefault(); next(); break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault(); prev(); break;
+          case 'Home':
+            e.preventDefault(); start(); break;
+          case 'End':
+            e.preventDefault(); go(SLIDES.length - 1); break;
+          case 'f':
+          case 'F':
+            if (document.fullscreenElement) { document.exitFullscreen(); }
+            else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+            break;
+        }
+      });
+
+      window.addEventListener('resize', fitScale);
+      window.addEventListener('hashchange', function () {
+        var i = hashIndex();
+        if (i !== index) go(i);
+      });
+
+      buildDots();
+      fitScale();
+      index = hashIndex();
+      render();
+    })();
+  </script>
+</body>
+</html>
