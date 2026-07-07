@@ -275,61 +275,63 @@ body {
    ============================================================ */
 .deep-body {
   flex: 1;
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 56px;
-  align-items: center;
-  padding: 28px 0 8px;
-}
-
-/* Left: icon medallion + big number */
-.deep-visual {
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  padding: 20px 0 8px;
+}
+
+/* Kicker sits on its own line above the title row */
+.deep-body > .deep-kicker {
+  align-self: flex-start;
+  margin-bottom: 36px;
+}
+
+/* Title row: compact icon medallion, heading, and description column */
+.deep-title-row {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.deep-heading { flex: 0 0 auto; }
+.deep-title-row .deep-desc {
+  flex: 1;
+  margin: 0;
+  padding-left: 38px;
+  border-left: 2px solid var(--line);
+  max-width: none;
 }
 .deep-medallion {
   position: relative;
-  width: 230px;
-  height: 230px;
+  flex: 0 0 auto;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
-  border: 8px solid var(--c);
+  border: 5px solid var(--c);
   color: var(--c);
   background: color-mix(in srgb, var(--c) 7%, #fff);
   display: grid;
   place-items: center;
   box-shadow: var(--shadow-md);
 }
-.deep-medallion svg { width: 108px; height: 108px; }
+.deep-medallion svg { width: 50px; height: 50px; }
 .deep-medallion .num {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 64px;
-  height: 64px;
+  top: -8px;
+  right: -8px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: var(--c);
   color: #fff;
-  font-size: 30px;
+  font-size: 17px;
   font-weight: 900;
   display: grid;
   place-items: center;
-  border: 5px solid #fff;
+  border: 3px solid #fff;
   box-shadow: var(--shadow-sm);
 }
-.deep-step-of {
-  margin-top: 26px;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
-/* Right: content */
-.deep-content { max-width: 720px; }
 .deep-kicker {
   display: inline-block;
   font-size: 13px;
@@ -342,8 +344,8 @@ body {
   border-radius: 999px;
 }
 .deep-title {
-  margin: 18px 0 2px;
-  font-size: 72px;
+  margin: 0 0 2px;
+  font-size: 64px;
   line-height: .95;
   font-weight: 900;
   letter-spacing: -.03em;
@@ -351,23 +353,24 @@ body {
 }
 .deep-oneliner {
   margin: 6px 0 0;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 700;
   color: var(--navy-deep);
 }
 .deep-desc {
-  margin: 20px 0 22px;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.6;
   color: var(--muted);
-  max-width: 60ch;
 }
+
+/* Key points as a horizontal strip below the title row */
 .deep-points {
   list-style: none;
-  margin: 0;
+  margin: 52px 0 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 .deep-points li {
   display: flex;
@@ -377,6 +380,8 @@ body {
   line-height: 1.45;
   font-weight: 500;
   color: var(--ink);
+  /* Reserve two lines so slides with short points align with the rest of the deck */
+  min-height: 50px;
 }
 .deep-points .tick {
   flex: 0 0 auto;
@@ -390,6 +395,31 @@ body {
   place-items: center;
 }
 .deep-points .tick svg { width: 15px; height: 15px; }
+
+/* Running worked example threaded across the five deep-dive slides */
+.deep-example {
+  margin: 48px 0 0;
+  padding: 16px 20px 17px;
+  border-left: 4px solid var(--c);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--c) 6%, #fff);
+  box-shadow: var(--shadow-sm);
+}
+.deep-example-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+.deep-example-text {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.deep-example-text b { color: var(--navy); }
 
 /* ============================================================
    THANKS SLIDE
