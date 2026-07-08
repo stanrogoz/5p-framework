@@ -15,6 +15,7 @@ A practical framework for turning AI inputs into **decision-ready outputs**.
 ## What's in this repo
 
 - `docs/index.html` — interactive framework guide
+- `docs/skill.html` — how to install the 5P Framework as an agent skill
 - `docs/slides/` — presentation deck (individual slides + `deck.html`)
 - `docs/assets/` — framework assets i.e. png
 
