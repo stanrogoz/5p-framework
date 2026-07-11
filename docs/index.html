@@ -80,13 +80,16 @@
 
     /* ---------- The loop (signature) ---------- */
     .loop {
-      --loop-size: clamp(300px, 32vw, 430px);
+      --loop-size: clamp(300px, 35vw, 480px);
       --loop-r: calc(var(--loop-size) / 2 - 42px);
       position: relative;
       width: var(--loop-size);
       height: var(--loop-size);
       margin-inline: auto;
       flex: 0 0 auto;
+    }
+    @media (min-width: 881px) {
+      .loop { margin-top: -36px; }
     }
     .loop-ring {
       position: absolute;
