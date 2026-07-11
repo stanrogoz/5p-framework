@@ -6,161 +6,25 @@
   <title>The 5P Framework — by Stan Rogoz</title>
   <meta name="description" content="A practical framework for turning AI inputs into decision-ready outputs: Pause, Play, Push, Polish, Present. Framework by Stan Rogoz." />
 
+  <link rel="canonical" href="https://stanrogoz.github.io/5p-framework/" />
   <meta property="og:title" content="The 5P Framework — by Stan Rogoz" />
   <meta property="og:description" content="A practical framework for turning AI inputs into decision-ready outputs." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./assets/5p-framework.png" />
+  <meta property="og:url" content="https://stanrogoz.github.io/5p-framework/" />
+  <meta property="og:image" content="https://stanrogoz.github.io/5p-framework/assets/5p-framework.png" />
 
-  <!-- Caching (prefer server headers over http-equiv) -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%2311264a'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Arial,Helvetica,sans-serif'%20font-size='32'%20font-weight='800'%20text-anchor='middle'%20fill='%23ffffff'%3E5%3Ctspan%20fill='%235fb8ff'%3EP%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./site.css" />
 
   <style>
-    :root {
-      --navy: #11264a;
-      --navy-deep: #0c1c38;
-      --blue: #1f8ce6;
-      --blue-soft: #eef3fb;
-      --ink: #1c2738;
-      --muted: #5a6b82;
-      --line: #e3e9f2;
-      --white: #ffffff;
-
-      --pause: #6f2bb8;
-      --play: #e8731c;
-      --push: #1f8a4c;
-      --polish: #1e83d4;
-      --present: #15294f;
-
-      --radius: 18px;
-      --shadow-sm: 0 1px 3px rgba(17, 38, 74, .08);
-      --shadow-md: 0 10px 30px rgba(17, 38, 74, .10);
-      --shadow-lg: 0 24px 60px rgba(17, 38, 74, .16);
-      --ease: cubic-bezier(.2, .7, .2, 1);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      color: var(--ink);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; }
-
-    .wrap {
-      width: min(1180px, 92vw);
-      margin-inline: auto;
-    }
-
-    /* ---------- Top bar ---------- */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, .82);
-      backdrop-filter: saturate(160%) blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 66px;
-    }
-    .brand-mini {
-      font-weight: 900;
-      letter-spacing: -.02em;
-      font-size: 20px;
-      color: var(--navy);
-    }
-    .brand-mini b { color: var(--blue); }
-    .brand-mini .brand-by {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0;
-      color: var(--muted);
-    }
-    @media (max-width: 480px) { .brand-mini .brand-by { display: none; } }
-    .topnav {
-      display: flex;
-      gap: 6px;
-    }
-    .topnav a {
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--muted);
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: color .2s var(--ease), background .2s var(--ease);
-    }
-    .topnav a:hover { color: var(--navy); background: var(--blue-soft); }
-    .topnav a.nav-skill { display: inline-flex; align-items: center; gap: 6px; }
-    .nav-new {
-      font-size: 9.5px;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--push);
-      padding: 2px 6px;
-      border-radius: 999px;
-    }
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: 0;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 10px;
-      color: var(--navy);
-      transition: background .2s var(--ease);
-    }
-    .nav-toggle:hover { background: var(--blue-soft); }
-    .nav-toggle svg { display: block; width: 26px; height: 26px; }
-    .nav-toggle .icon-close { display: none; }
-    .nav-toggle[aria-expanded="true"] .icon-open { display: none; }
-    .nav-toggle[aria-expanded="true"] .icon-close { display: block; }
-    @media (max-width: 760px) {
-      .nav-toggle { display: inline-flex; }
-      .topnav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 12px;
-        background: rgba(255, 255, 255, .98);
-        backdrop-filter: saturate(160%) blur(12px);
-        border-bottom: 1px solid var(--line);
-        box-shadow: var(--shadow-md);
-      }
-      .topnav.open { display: flex; }
-      .topnav a { font-size: 15px; padding: 12px 14px; }
-      .topnav a.nav-skill { justify-content: space-between; }
-    }
-
     /* ---------- Hero ---------- */
     .hero {
       position: relative;
-      padding: 76px 0 48px;
+      padding: 64px 0 36px;
       overflow: hidden;
     }
     .hero::before {
@@ -174,54 +38,27 @@
     }
     .hero .wrap { position: relative; }
 
-    .hero-top {
-      display: flex;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) auto;
       align-items: center;
-      justify-content: center;
-      gap: clamp(28px, 5vw, 64px);
-      flex-wrap: wrap;
-      text-align: center;
+      gap: clamp(28px, 5vw, 72px);
     }
-    .hero-brand { flex: 0 0 auto; }
-
-    .logo-5p {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 4px;
-      font-weight: 900;
-      letter-spacing: -.04em;
-      line-height: .82;
-      font-size: clamp(72px, 14vw, 150px);
-    }
-    .logo-5p .five { color: var(--navy); }
-    .logo-5p .p { color: var(--blue); }
-
-    .logo-tag {
-      margin: 10px 0 0;
+    .hero-kicker {
+      margin: 0 0 14px;
       font-weight: 800;
-      letter-spacing: .42em;
-      font-size: clamp(13px, 2.2vw, 16px);
-      color: var(--navy);
-      text-transform: uppercase;
-    }
-    .logo-sub {
-      margin: 6px 0 0;
-      font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: .22em;
       font-size: 12.5px;
-      color: var(--muted);
+      color: var(--blue-ink);
       text-transform: uppercase;
     }
-
     .hero h1 {
       margin: 0;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.08;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height: 1.04;
       letter-spacing: -.02em;
       font-weight: 800;
-      max-width: 18ch;
-      text-align: center;
+      max-width: 16ch;
       color: var(--navy-deep);
     }
     .hero h1 em {
@@ -229,85 +66,106 @@
       color: var(--blue);
     }
     .hero p.lede {
-      margin: 26px auto 0;
-      font-size: clamp(16px, 2.2vw, 19px);
+      margin: 22px 0 0;
+      font-size: clamp(16px, 2.2vw, 18.5px);
       color: var(--muted);
-      max-width: 60ch;
-      text-align: center;
+      max-width: 52ch;
     }
     .hero-cta {
-      margin-top: 30px;
+      margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 12px;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      padding: 13px 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform .15s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
-    }
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-    .btn-ghost {
-      background: #fff;
-      color: var(--navy);
-      border-color: var(--line);
-    }
-    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ---------- Stepper rail ---------- */
-    .rail {
-      padding: 18px 0 8px;
-    }
-    .rail-track {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
+    /* ---------- The loop (signature) ---------- */
+    .loop {
+      --loop-size: clamp(300px, 32vw, 430px);
+      --loop-r: calc(var(--loop-size) / 2 - 42px);
       position: relative;
+      width: var(--loop-size);
+      height: var(--loop-size);
+      margin-inline: auto;
+      flex: 0 0 auto;
     }
-    .rail-track::before {
-      content: "";
+    .loop-ring {
       position: absolute;
-      top: 27px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
-      z-index: 0;
+      top: 50%;
+      left: 50%;
+      width: calc(var(--loop-r) * 2);
+      height: calc(var(--loop-r) * 2);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px dashed var(--line);
     }
-    .rail-node {
-      position: relative;
-      z-index: 1;
+    .loop-runner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      margin: -5px 0 0 -5px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(31, 140, 230, .18);
+      offset-path: circle(var(--loop-r) at 50% 50%);
+      offset-rotate: 0deg;
+      animation: loop-travel 14s linear infinite;
+    }
+    @keyframes loop-travel {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+    }
+    @supports not (offset-path: circle(10px at 50% 50%)) {
+      .loop-runner { display: none; }
+    }
+    .loop-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      pointer-events: none;
+    }
+    .loop-center .logo-5p {
+      font-family: var(--font-display);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: .85;
+      font-size: calc(var(--loop-size) * .21);
+    }
+    .loop-center .logo-5p .five { color: var(--navy); }
+    .loop-center .logo-5p .p { color: var(--blue); }
+    .loop-center .logo-tag {
+      margin: 8px 0 0;
+      font-weight: 800;
+      letter-spacing: .4em;
+      text-indent: .4em; /* recenters tracked-out uppercase */
+      font-size: calc(var(--loop-size) * .034);
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .loop-node {
+      --dot: calc(var(--loop-size) * .155);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--dot);
+      height: var(--dot);
+      margin: calc(var(--dot) / -2) 0 0 calc(var(--dot) / -2);
+      padding: 0;
       background: none;
       border: 0;
       font: inherit;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 4px;
-      border-radius: 14px;
-      color: var(--muted);
-      transition: background .2s var(--ease);
+      transform: rotate(var(--a)) translateY(calc(var(--loop-r) * -1)) rotate(calc(var(--a) * -1));
     }
-    .rail-node:hover { background: var(--blue-soft); }
-    .rail-dot {
-      width: 54px;
-      height: 54px;
+    .loop-dot {
+      position: relative;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -315,79 +173,63 @@
       border: 3px solid var(--c, var(--blue));
       color: var(--c, var(--blue));
       box-shadow: var(--shadow-sm);
-      transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
     }
-    .rail-node:hover .rail-dot,
-    .rail-node[aria-current] .rail-dot {
-      transform: translateY(-3px);
+    .loop-node:hover .loop-dot,
+    .loop-node[aria-current] .loop-dot {
+      transform: scale(1.12);
       box-shadow: var(--shadow-md);
     }
-    .rail-node[aria-current] .rail-dot {
+    .loop-node[aria-current] .loop-dot {
       background: var(--c);
       color: #fff;
     }
-    .rail-dot svg { width: 26px; height: 26px; }
-    .rail-name {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .04em;
-      color: var(--navy);
-    }
-    .rail-num {
+    .loop-dot svg { width: 46%; height: 46%; }
+    .loop-num {
       position: absolute;
-      top: -2px;
-      right: 50%;
-      transform: translateX(26px);
-      width: 20px;
-      height: 20px;
+      top: -4px;
+      right: -4px;
+      width: calc(var(--loop-size) * .048);
+      height: calc(var(--loop-size) * .048);
+      min-width: 17px;
+      min-height: 17px;
       border-radius: 50%;
       background: var(--c, var(--blue));
       color: #fff;
-      font-size: 11px;
+      font-size: max(calc(var(--loop-size) * .026), 10px);
       font-weight: 800;
       display: grid;
       place-items: center;
     }
-    @media (max-width: 720px) {
-      .rail-track { grid-template-columns: repeat(5, 1fr); gap: 2px; }
-      .rail-track::before { display: none; }
-      .rail-dot { width: 44px; height: 44px; }
-      .rail-dot svg { width: 21px; height: 21px; }
-      .rail-name { font-size: 10.5px; }
-      .rail-num { transform: translateX(20px); }
+    .loop-name {
+      position: absolute;
+      top: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: max(calc(var(--loop-size) * .028), 10.5px);
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 880px) {
+      .hero { padding-top: 44px; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero h1, .hero p.lede { margin-inline: auto; }
+      .hero-cta { justify-content: center; }
+      .loop { --loop-size: min(340px, 86vw); }
     }
 
     /* ---------- Cards ---------- */
     .steps {
-      padding: 36px 0 20px;
+      padding: 48px 0 20px;
+      scroll-margin-top: 76px;
     }
-    .section-head {
-      text-align: center;
-      margin-bottom: 34px;
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--blue);
-      background: var(--blue-soft);
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
-    .section-head h2 {
-      margin: 16px 0 8px;
-      font-size: clamp(26px, 4vw, 38px);
-      letter-spacing: -.02em;
-      color: var(--navy-deep);
-    }
-    .section-head p {
-      margin: 0 auto;
-      max-width: 56ch;
-      color: var(--muted);
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -400,9 +242,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px 22px;
-      cursor: pointer;
-      font: inherit;
-      color: inherit;
+      margin: 0;
       overflow: hidden;
       transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
     }
@@ -438,19 +278,39 @@
       position: absolute;
       top: 20px;
       right: 20px;
+      font-family: var(--font-display);
       font-size: 30px;
-      font-weight: 900;
-      color: color-mix(in srgb, var(--c) 18%, #fff);
+      font-weight: 800;
+      color: color-mix(in srgb, var(--c) 22%, #fff);
       line-height: 1;
     }
     .card h3 {
       margin: 0 0 4px;
+      font-family: var(--font-display);
       font-size: 21px;
       letter-spacing: -.01em;
       color: var(--navy-deep);
     }
-    .card .verb {
+    .card-toggle {
+      background: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      font: inherit;
       color: var(--c);
+      cursor: pointer;
+    }
+    /* Stretch the toggle's hit area over the whole card */
+    .card-toggle::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+    }
+    .card-toggle:focus-visible { outline: none; }
+    .card:has(.card-toggle:focus-visible) {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
     }
     .card .one-liner {
       margin: 0;
@@ -490,7 +350,7 @@
     .card .more svg { width: 14px; height: 14px; transition: transform .3s var(--ease); }
     .card.open .more svg { transform: rotate(180deg); }
 
-    /* ---------- Banner / quote ---------- */
+    /* ---------- Banner ---------- */
     .banner {
       margin: 30px 0 0;
       background: linear-gradient(135deg, var(--navy-deep), var(--navy));
@@ -506,6 +366,7 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(600px 300px at 80% 120%, rgba(31, 140, 230, .35), transparent 60%);
+      pointer-events: none;
     }
     .banner h2 {
       position: relative;
@@ -521,13 +382,14 @@
       margin: 22px 0 0;
       font-size: 14px;
       letter-spacing: .04em;
-      color: rgba(255, 255, 255, .7);
+      color: rgba(255, 255, 255, .75);
     }
     .banner .by b { color: #fff; font-weight: 700; }
 
     /* ---------- Use it section ---------- */
     .use {
       padding: 64px 0 24px;
+      scroll-margin-top: 76px;
     }
     .use-grid {
       display: grid;
@@ -547,7 +409,7 @@
       font-weight: 800;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--blue-ink);
     }
     .use-card h4 { margin: 8px 0 6px; font-size: 18px; color: var(--navy-deep); }
     .use-card p { margin: 0; color: var(--muted); font-size: 14.5px; }
@@ -638,27 +500,7 @@
       .skill-card { grid-template-columns: 1fr; }
     }
 
-    /* ---------- Footer ---------- */
-    footer {
-      margin-top: 56px;
-      border-top: 1px solid var(--line);
-      padding: 30px 0 48px;
-    }
-    footer .wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer .f-brand {
-      font-weight: 900;
-      letter-spacing: -.02em;
-      color: var(--navy);
-    }
-    footer .f-brand b { color: var(--blue); }
-    footer small { color: var(--muted); }
-
+    /* ---------- Reveal ---------- */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -667,8 +509,9 @@
     .reveal.in { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto !important; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .loop-runner { animation: none; display: none; }
+      .skill-copy .new-badge .dot { animation: none; }
     }
   </style>
 </head>
@@ -676,7 +519,7 @@
 
   <header class="topbar">
     <div class="wrap">
-      <div class="brand-mini">5<b>P</b> Framework <span class="brand-by">by Stan Rogoz</span></div>
+      <a class="brand-mini" href="./index.html">5<b>P</b> Framework <span class="brand-by">by Stan Rogoz</span></a>
       <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="topnav">
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -693,33 +536,33 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <div class="hero-top">
-          <div class="hero-brand">
-            <div class="logo-5p" aria-hidden="true"><span class="five">5</span><span class="p">P</span></div>
-            <p class="logo-tag">Framework</p>
-            <p class="logo-sub">AI-Augmented Decision-Making</p>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-kicker">AI-Augmented Decision-Making</p>
+            <h1>Turn AI inputs into <em>decision-ready outputs.</em></h1>
+            <p class="lede">
+              By default AI gives you a quick answer — rarely a defensible one. The 5P loop
+              is five simple steps that take you from a basic prompt to an answer that
+              holds up in any meeting room.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#steps">
+                See the 5 steps
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="#use">See how teams use it</a>
+            </div>
           </div>
-          <h1>Turn AI inputs into <em>decision-ready outputs.</em></h1>
+          <div class="loop" id="loop" role="group" aria-label="The 5P loop — five steps from prompt to decision">
+            <div class="loop-ring" aria-hidden="true"></div>
+            <div class="loop-runner" aria-hidden="true"></div>
+            <div class="loop-center" aria-hidden="true">
+              <div class="logo-5p"><span class="five">5</span><span class="p">P</span></div>
+              <p class="logo-tag">Framework</p>
+            </div>
+            <!-- nodes injected by buildLoop() -->
+          </div>
         </div>
-
-        <p class="lede">
-          By default AI gives you a quick answer — rarely a defensible one. The 5P loop
-          is five simple steps that take you from a basic prompt to an answer that
-          holds up in any meeting room.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#steps">
-            See the 5 steps
-            <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="#use">See how teams use it</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="rail" aria-label="The five steps at a glance">
-      <div class="wrap">
-        <div class="rail-track" id="rail"></div>
       </div>
     </section>
 
@@ -731,13 +574,6 @@
           <p>Each step has one clear goal. Open any step to see what "good" looks like in practice.</p>
         </div>
         <div class="grid" id="cards"></div>
-      </div>
-    </section>
-
-    <section class="wrap">
-      <div class="banner reveal">
-        <h2>A practical framework for turning AI inputs into <em>decision-ready outputs.</em></h2>
-        <p class="by">Framework by <b>Stan Rogoz</b></p>
       </div>
     </section>
 
@@ -794,9 +630,9 @@
     </section>
 
     <section class="wrap" id="start">
-      <div class="banner reveal" style="background:linear-gradient(135deg,var(--blue),#1565c0);">
+      <div class="banner reveal">
         <h2>Pick one real problem.<br>Run it through the 5 Ps.</h2>
-        <p class="by">Pause &middot; Play &middot; Push &middot; Polish &middot; Present</p>
+        <p class="by">Pause &middot; Play &middot; Push &middot; Polish &middot; Present — framework by <b>Stan Rogoz</b></p>
       </div>
     </section>
   </main>
@@ -854,7 +690,7 @@
           ]
         },
         {
-          key: 'present', num: 5, name: 'Present', color: '#15294f',
+          key: 'present', num: 5, name: 'Present', color: '#c0334e',
           oneLiner: 'Prepare for scrutiny.',
           body: 'Get ready to defend it. Anticipate the hard questions, name the risks and trade-offs, and have your backup reasoning ready for the room.',
           points: [
@@ -874,39 +710,43 @@
         chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
       };
 
-      var rail = document.getElementById('rail');
+      var loop = document.getElementById('loop');
       var cards = document.getElementById('cards');
 
-      function buildRail() {
-        var html = STEPS.map(function (s) {
-          return '<button class="rail-node" type="button" data-key="' + s.key + '" style="--c:' + s.color + '">'
-            + '<span class="rail-dot">' + ICONS[s.key] + '<span class="rail-num">' + s.num + '</span></span>'
-            + '<span class="rail-name">' + s.name.toUpperCase() + '</span>'
+      function buildLoop() {
+        var html = STEPS.map(function (s, i) {
+          var angle = i * 72; // five nodes, starting at the top, clockwise
+          return '<button class="loop-node" type="button" data-key="' + s.key + '"'
+            + ' style="--c:' + s.color + ';--a:' + angle + 'deg"'
+            + ' aria-label="' + s.name + ' — step ' + s.num + ' of 5">'
+            + '<span class="loop-dot">' + ICONS[s.key] + '<span class="loop-num" aria-hidden="true">' + s.num + '</span></span>'
+            + '<span class="loop-name" aria-hidden="true">' + s.name.toUpperCase() + '</span>'
             + '</button>';
         }).join('');
-        rail.innerHTML = html;
+        loop.insertAdjacentHTML('beforeend', html);
       }
 
       function buildCards() {
         var html = STEPS.map(function (s) {
           var pts = s.points.map(function (p) { return '<li>' + p + '</li>'; }).join('');
-          return '<button class="card" type="button" data-key="' + s.key + '" style="--c:' + s.color + '" aria-expanded="false">'
-            + '<span class="card-num">' + s.num + '</span>'
-            + '<span class="card-icon">' + ICONS[s.key] + '</span>'
-            + '<h3><span class="verb">' + s.name + '.</span></h3>'
+          return '<article class="card" data-key="' + s.key + '" style="--c:' + s.color + '">'
+            + '<span class="card-num" aria-hidden="true">' + s.num + '</span>'
+            + '<span class="card-icon" aria-hidden="true">' + ICONS[s.key] + '</span>'
+            + '<h3><button class="card-toggle" type="button" aria-expanded="false" aria-controls="detail-' + s.key + '">' + s.name + '.</button></h3>'
             + '<p class="one-liner">' + s.oneLiner + '</p>'
-            + '<span class="detail"><span class="detail-inner">'
+            + '<div class="detail" id="detail-' + s.key + '" role="region" aria-label="' + s.name + ' in practice"><div class="detail-inner">'
             + '<p>' + s.body + '</p><ul>' + pts + '</ul>'
-            + '</span></span>'
-            + '<span class="more">Show me how ' + ICONS.chevron + '</span>'
-            + '</button>';
+            + '</div></div>'
+            + '<span class="more" aria-hidden="true">Show me how ' + ICONS.chevron + '</span>'
+            + '</article>';
         }).join('');
         cards.innerHTML = html;
       }
 
       function toggleCard(card) {
         var isOpen = card.classList.toggle('open');
-        card.setAttribute('aria-expanded', String(isOpen));
+        var toggle = card.querySelector('.card-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', String(isOpen));
         var more = card.querySelector('.more');
         if (more) {
           more.childNodes[0].nodeValue = (isOpen ? 'Hide ' : 'Show me how ');
@@ -921,7 +761,7 @@
       }
 
       function setActiveNode(key) {
-        var nodes = rail.querySelectorAll('.rail-node');
+        var nodes = loop.querySelectorAll('.loop-node');
         nodes.forEach(function (n) {
           if (n.getAttribute('data-key') === key) {
             n.setAttribute('aria-current', 'step');
@@ -932,8 +772,8 @@
       }
 
       function wireEvents() {
-        rail.addEventListener('click', function (e) {
-          var node = e.target.closest('.rail-node');
+        loop.addEventListener('click', function (e) {
+          var node = e.target.closest('.loop-node');
           if (!node) return;
           var key = node.getAttribute('data-key');
           setActiveNode(key);
@@ -985,7 +825,7 @@
         });
       }
 
-      buildRail();
+      buildLoop();
       buildCards();
       wireEvents();
       wireReveal();

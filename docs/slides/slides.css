@@ -18,7 +18,9 @@
   --play: #e8731c;
   --push: #1f8a4c;
   --polish: #1e83d4;
-  --present: #15294f;
+  --present: #c0334e;
+
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
 
   --shadow-sm: 0 1px 3px rgba(17, 38, 74, .08);
   --shadow-md: 0 10px 30px rgba(17, 38, 74, .10);
@@ -77,8 +79,13 @@ body {
 }
 
 /* ---------- Brand wordmark ---------- */
+/* Display roles carry the brand face; Bricolage tops out at 800 */
+.wordmark, .logo-5p, .deep-title, .intro-tagline, .thanks-title {
+  font-family: var(--font-display);
+}
+
 .wordmark {
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.02em;
   color: var(--navy);
   font-size: 24px;
@@ -165,7 +172,7 @@ body {
 .logo-5p {
   display: flex;
   align-items: flex-end;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.05em;
   line-height: .8;
   font-size: 132px;
@@ -347,7 +354,7 @@ body {
   margin: 0 0 2px;
   font-size: 64px;
   line-height: .95;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.03em;
   color: var(--c);
 }
@@ -482,7 +489,7 @@ body {
   margin: 18px 0 2px;
   font-size: 72px;
   line-height: .95;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -.03em;
   color: var(--c);
 }
