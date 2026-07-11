@@ -52,18 +52,22 @@
       color: var(--blue-ink);
       text-transform: uppercase;
     }
-    .hero h1 {
+    .hero-title {
       margin: 0;
-      font-size: clamp(34px, 4.6vw, 58px);
-      line-height: 1.04;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.06;
       letter-spacing: -.02em;
       font-weight: 800;
-      max-width: 16ch;
+      max-width: 24ch;
       color: var(--navy-deep);
     }
-    .hero h1 em {
+    .hero-title em {
       font-style: normal;
       color: var(--blue);
+    }
+    .br-desktop { display: none; }
+    @media (min-width: 881px) {
+      .br-desktop { display: inline; }
     }
     .hero p.lede {
       margin: 22px 0 0;
@@ -80,7 +84,7 @@
 
     /* ---------- The loop (signature) ---------- */
     .loop {
-      --loop-size: clamp(300px, 35vw, 480px);
+      --loop-size: clamp(300px, 35vw, 580px);
       --loop-r: calc(var(--loop-size) / 2 - 42px);
       position: relative;
       width: var(--loop-size);
@@ -542,7 +546,7 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <p class="hero-kicker">AI-Augmented Decision-Making</p>
-            <h1>Turn AI inputs into <em>decision-ready outputs.</em></h1>
+            <h1 class="hero-title">Turn AI inputs into <br class="br-desktop"><em>decision-ready outputs.</em></h1>
             <p class="lede">
               By default AI gives you a quick answer — rarely a defensible one. The 5P loop
               is five simple steps that take you from a basic prompt to an answer that
