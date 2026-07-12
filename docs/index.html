@@ -399,6 +399,10 @@
       color: rgba(255, 255, 255, .75);
     }
     .banner .by b { color: #fff; font-weight: 700; }
+    .banner .btn-primary {
+      position: relative;
+      margin-top: 24px;
+    }
 
     /* ---------- Use it section ---------- */
     .use {
@@ -572,7 +576,7 @@
       </button>
       <nav class="topnav" id="topnav" aria-label="Sections">
         <a href="#steps">The 5P Steps</a>
-        <a href="#use">How to use it</a>
+        <a href="#use">When to use it</a>
         <a class="nav-skill" href="./skill.html">Skill <span class="nav-new">New</span></a>
         <a href="./slides/deck.html">Presentation</a>
       </nav>
@@ -588,7 +592,7 @@
             <h1 class="hero-title">Turn AI inputs into <br class="br-desktop"><em>decision-ready outputs.</em></h1>
             <p class="lede">
               By default AI gives you a quick answer — rarely a defensible one. The 5P framework
-              is five simple steps that take you from a basic prompt to an answer that
+              is five simple steps Pause &middot; Play &middot; Push &middot; Polish &middot; Present, that take you from a basic prompt to an answer that
               holds up in any meeting room.
             </p>
             <div class="hero-cta">
@@ -612,6 +616,33 @@
       </div>
     </section>
 
+    <section class="use" id="use">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">When to use it</span>
+          <h2>When to reach for the 5P Framework</h2>
+          <p>It scales from a five-minute prompt to a board-level recommendation.</p>
+        </div>
+        <div class="use-grid">
+          <div class="use-card reveal">
+            <div class="k">Solo</div>
+            <h4>Sharper thinking</h4>
+            <p>Use AI as a sparring partner without outsourcing your judgement. Pause to frame it, Push to stress-test it.</p>
+          </div>
+          <div class="use-card reveal">
+            <div class="k">Teams</div>
+            <h4>Shared standard</h4>
+            <p>Give everyone the same checklist so AI-assisted work arrives review-ready, not half-baked.</p>
+          </div>
+          <div class="use-card reveal">
+            <div class="k">Leaders</div>
+            <h4>Defensible decisions</h4>
+            <p>Present outputs that survive scrutiny — assumptions surfaced, alternatives considered, risks named.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="steps" id="steps">
       <div class="wrap">
         <div class="section-head reveal">
@@ -622,6 +653,8 @@
         <div class="grid" id="cards"></div>
       </div>
     </section>
+
+
 
     <section class="skill-promo" id="skill">
       <div class="wrap">
@@ -652,37 +685,14 @@
       </div>
     </section>
 
-    <section class="use" id="use">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="eyebrow">In Practice</span>
-          <h2>When to reach for the 5P Framework</h2>
-          <p>It scales from a five-minute prompt to a board-level recommendation.</p>
-        </div>
-        <div class="use-grid">
-          <div class="use-card reveal">
-            <div class="k">Solo</div>
-            <h4>Sharper thinking</h4>
-            <p>Use AI as a sparring partner without outsourcing your judgement. Pause to frame it, Push to stress-test it.</p>
-          </div>
-          <div class="use-card reveal">
-            <div class="k">Teams</div>
-            <h4>Shared standard</h4>
-            <p>Give everyone the same checklist so AI-assisted work arrives review-ready, not half-baked.</p>
-          </div>
-          <div class="use-card reveal">
-            <div class="k">Leaders</div>
-            <h4>Defensible decisions</h4>
-            <p>Present outputs that survive scrutiny — assumptions surfaced, alternatives considered, risks named.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="wrap" id="start">
       <div class="banner reveal">
         <h2>Pick one real problem.<br>Run it through the 5 Ps.</h2>
         <p class="by">Pause &middot; Play &middot; Push &middot; Polish &middot; Present — framework by <b>Stan Rogoz</b></p>
+        <a class="btn btn-primary" href="./slides/deck.html#1">
+          Walk through the process with a real example
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </section>
   </main>
