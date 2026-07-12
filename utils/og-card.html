@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #11264a;
+    --navy-deep: #0c1c38;
+    --blue: #1f8ce6;
+    --blue-ink: #1467ad;
+    --blue-soft: #eef3fb;
+    --ink: #1c2738;
+    --muted: #5a6b82;
+    --line: #e3e9f2;
+
+    --pause: #6f2bb8;
+    --play: #e8731c;
+    --push: #1f8a4c;
+    --polish: #1e83d4;
+    --present: #c0334e;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #dfe7f3;
+    color: var(--ink);
+    padding: 22px;
+  }
+  .card {
+    height: 100%;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 40px rgba(17, 38, 74, .12);
+  }
+
+  /* ---------- Top: logo + steps rail ---------- */
+  .top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    padding: 0 52px;
+  }
+  .logo-block {
+    flex: 0 0 auto;
+    padding-right: 44px;
+    border-right: 2px solid var(--line);
+  }
+  .logo-5p {
+    font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -.05em;
+    line-height: .8;
+    font-size: 118px;
+    color: var(--navy);
+  }
+  .logo-5p b { color: var(--blue); font-weight: 800; }
+  .logo-tag {
+    margin-top: 10px;
+    font-weight: 800;
+    letter-spacing: .38em;
+    font-size: 19px;
+    color: var(--navy);
+    text-transform: uppercase;
+  }
+  .logo-rule {
+    width: 140px;
+    height: 2px;
+    background: var(--blue);
+    margin: 13px 0;
+  }
+  .logo-sub {
+    font-weight: 800;
+    letter-spacing: .08em;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .steps {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: start;
+  }
+  .step {
+    position: relative;
+    text-align: center;
+    padding: 0 6px;
+  }
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 76px; /* badge (24 + 10 gap) + circle half (42) */
+    left: calc(50% + 48px);
+    width: calc(100% - 96px);
+    border-top: 3px dotted var(--line);
+  }
+  .badge {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: var(--sc);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+  }
+  .circle {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid var(--sc);
+    color: var(--sc);
+    display: grid;
+    place-items: center;
+    background: #fff;
+  }
+  .circle svg { width: 40px; height: 40px; }
+  .step-name {
+    margin: 14px 0 5px;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: .01em;
+    color: var(--sc);
+  }
+  .step-line {
+    font-size: 14.5px;
+    line-height: 1.35;
+    color: var(--muted);
+  }
+
+  /* ---------- Bottom: tagline band ---------- */
+  .band {
+    flex: 0 0 200px;
+    background: var(--blue-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 60px;
+  }
+  .tagline {
+    font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+    font-size: 33px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: var(--navy-deep);
+    max-width: 40ch;
+  }
+  .tagline em { font-style: normal; color: var(--blue); }
+  .band-rule {
+    width: 560px;
+    height: 1px;
+    background: rgba(17, 38, 74, .18);
+    margin: 22px 0 16px;
+  }
+  .credit {
+    font-size: 17px;
+    color: var(--muted);
+  }
+  .credit b { color: var(--navy); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="logo-block">
+        <div class="logo-5p">5<b>P</b></div>
+        <div class="logo-tag">Framework</div>
+        <div class="logo-rule"></div>
+        <div class="logo-sub">AI-Augmented<br>Decision-Making</div>
+      </div>
+
+      <div class="steps">
+        <div class="step" style="--sc:#6f2bb8">
+          <div class="badge">1</div>
+          <div class="circle"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.4"/><rect x="14" y="5" width="4" height="14" rx="1.4"/></svg></div>
+          <div class="step-name">PAUSE</div>
+          <div class="step-line">Plan objective,<br>add context.</div>
+        </div>
+        <div class="step" style="--sc:#e8731c">
+          <div class="badge">2</div>
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.3 1 2.1V16h6v-.4c0-.8.4-1.5 1-2.1A6 6 0 0 0 12 3Z"/></svg></div>
+          <div class="step-name">PLAY</div>
+          <div class="step-line">Open up<br>the space.</div>
+        </div>
+        <div class="step" style="--sc:#1f8a4c">
+          <div class="badge">3</div>
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><path d="M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg></div>
+          <div class="step-name">PUSH</div>
+          <div class="step-line">Challenge<br>assumptions.</div>
+        </div>
+        <div class="step" style="--sc:#1e83d4">
+          <div class="badge">4</div>
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l5 5L8 21H3v-5L16 3Z"/><path d="M14 5l5 5"/></svg></div>
+          <div class="step-name">POLISH</div>
+          <div class="step-line">Finalise<br>the output.</div>
+        </div>
+        <div class="step" style="--sc:#c0334e">
+          <div class="badge">5</div>
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17.5" cy="9.5" r="2.2"/><path d="M16 20c0-2.4 1.4-4 3.5-4 1 0 1.9.4 2.5 1"/></svg></div>
+          <div class="step-name">PRESENT</div>
+          <div class="step-line">Prepare for<br>scrutiny.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="band">
+      <div class="tagline">A practical framework for turning<br>AI inputs into <em>decision-ready outputs.</em></div>
+      <div class="band-rule"></div>
+      <div class="credit">Framework by <b>Stan Rogoz</b></div>
+    </div>
+  </div>
+</body>
+</html>

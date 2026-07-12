@@ -1,5 +1,7 @@
 # 5P Framework by Stan Rogoz
 
+![5P Framework diagram](docs/assets/5p-framework.png "5P Framework diagram")
+
 A practical framework for turning AI inputs into **decision-ready outputs**.
 
 ## The Five Steps
@@ -18,6 +20,7 @@ A practical framework for turning AI inputs into **decision-ready outputs**.
 - `docs/skill.html` — how to install the 5P Framework as an agent skill
 - `docs/slides/` — presentation deck (individual slides + `deck.html`)
 - `docs/assets/` — framework assets i.e. png
+- `utils/` — tooling: `og-card.html` (social-preview card) + `generate-og-image.sh` to re-render `docs/assets/5p-framework.png`
 
 ## Live site
 

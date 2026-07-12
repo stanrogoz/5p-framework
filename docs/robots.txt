@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stanrogoz.github.io/5p-framework/sitemap.xml
