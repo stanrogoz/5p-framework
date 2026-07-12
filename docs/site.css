@@ -91,7 +91,7 @@ h1, h2 {
   letter-spacing: 0;
   color: var(--muted);
 }
-@media (max-width: 380px) { .brand-mini .brand-by { display: none; } }
+@media (max-width: 280px) { .brand-mini .brand-by { display: none; } }
 .topnav {
   display: flex;
   gap: 6px;
