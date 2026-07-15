@@ -29,6 +29,14 @@
 
 * { box-sizing: border-box; }
 
+/* Keep backgrounds and colors when printed to PDF (utils/generate-deck-pdf.sh). */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;

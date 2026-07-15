@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>5P Framework — deck print layout</title>
+  <!--
+    Print layout for the presentation deck. Each slide page from
+    docs/slides/ is embedded at its native 1280x720 size, one per
+    PDF page. Rendered by utils/generate-deck-pdf.sh — not meant
+    to be published.
+  -->
+  <style>
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    html, body { background: #fff; }
+    .page {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      break-after: page;
+    }
+    .page:last-child { break-after: auto; }
+    iframe {
+      width: 1280px;
+      height: 720px;
+      border: 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="page"><iframe src="../docs/slides/01-intro.html" title="Slide 1 — Overview"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/02-pause.html" title="Slide 2 — Pause"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/03-play.html" title="Slide 3 — Play"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/04-push.html" title="Slide 4 — Push"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/05-polish.html" title="Slide 5 — Polish"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/06-present.html" title="Slide 6 — Present"></iframe></div>
+  <div class="page"><iframe src="../docs/slides/07-thanks.html" title="Slide 7 — Thank you"></iframe></div>
+</body>
+</html>
